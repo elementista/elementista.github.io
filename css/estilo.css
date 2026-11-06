@@ -1,0 +1,213 @@
+/* ==========================================================================
+   1. ESTRUTURA GERAL DO SISTEMA
+   ========================================================================== */
+body {
+    background-color: #0d1117;
+    color: #00ffcc;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO (APENAS A IDENTIDADE CENTRALIZADA)
+   ========================================================================== */
+header {
+    background-color: rgba(13, 17, 23, 0.92); /* Proteção contra a chuva Matrix */
+    border-bottom: 2px dashed #00ffcc;
+    padding: 30px;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+}
+
+/* ⚡ CENTRALIZA EXCLUSIVAMENTE O BLOCO DE TEXTOS E IMAGEM DO BANNER */
+.header-identidade {
+    text-align: center; 
+    width: 100%;
+    margin-bottom: 25px;
+    border: 2px solid #00ffcc;
+    border-radius: 15px;
+    background: #000;
+    /*display: flex;*/
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+    transition: transform 0.2s ease;
+}
+
+/* Container do Banner (Centraliza o Escudo e o Nome juntos em linha) */
+.banner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* ⚡ Garante o alinhamento horizontal no centro */
+    gap: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.banner-escudo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.banner-nome {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #ff9900;
+    /*text-transform: uppercase;*/
+    letter-spacing: 2px;
+}
+
+/* O Slogan Oficial (Centralizado logo abaixo do nome) */
+.banner-slogan {
+    display: block;
+    color: #ff9900;
+    /*font-size: 1.4rem;*/
+    font-size: 1.0rem;
+    text-shadow: 0 0 15px #ffffff;
+    margin: 0 auto 15px auto;
+    letter-spacing: 1px;
+}
+
+/* Descrição Verde (Centralizada logo abaixo do slogan) */
+.banner-descricao {
+    display: block;
+    color: #00ffcc;
+    font-size: 1rem;
+    margin: 0 auto;
+    line-height: 1.6;
+    max-width: 950px;
+}
+
+/* ==========================================================================
+   3. BARRA DO MENU (MANTIDA NO FLUXO PADRÃO DO SITE)
+   ========================================================================== */
+.menu-navegacao {
+    display: block;
+    width: 100%;
+    border-top: 1px solid rgba(0, 255, 204, 0.2);
+    padding-top: 25px;
+}
+
+.menu-navegacao ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.menu-navegacao a {
+    text-decoration: none;
+    background: #161b22;
+    border: 1px solid #00ffcc;
+    border-radius: 15px;
+    /*color: #00ffcc;*/
+    color: #ff9900;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.menu-navegacao a:hover, .menu-navegacao a.active {
+    background: #00ffcc;
+    color: #0d1117;
+    box-shadow: 0 0 10px #00ffcc;
+}
+
+/* ==========================================================================
+   3. ÁREA DOS POSTS E DOSSIÊS (CONTEÚDO DO BLOG)
+   ========================================================================== */
+.layout-blog {
+    max-width: 1200px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.post-card {
+    background: rgba(22, 27, 34, 0.85);
+    border: 1px solid #00ffcc;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.02);
+}
+
+.post-card h2 {
+    color: #ff9900;
+    font-size: 1.4rem;
+    margin: 0 0 12px 0;
+}
+
+.post-meta {
+    color: #555;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+.post-card p {
+    line-height: 1.7;
+    font-size: 1rem;
+    color: #a3ead8; /* Tom ciano suave para leitura confortável */
+    margin: 0;
+}
+
+.conteudo-central {
+    max-width: 750px;           /* Largura limite para o texto ficar compacto e legível */
+    width: 90%;                 /* Garante que o bloco encolha em telas menores sem quebrar */
+    margin: 40px auto;          /* ⚡ MÁGICA DA BANCADA: 'auto' nas laterais joga a caixa no centro exato */
+    display: block;             /* Força o navegador a respeitar as margens laterais automáticas */
+    background-color: rgba(13, 17, 23, 0.92); /* Fundo sólido para cobrir a Matrix e proteger a leitura */
+    border: 1px solid #00ffcc;  /* Borda fina no tom ciano padrão do seu blog */
+    padding: 25px;              /* Espaçamento interno para o texto não encostar na borda */
+    border-radius: 8px;         /* Cantos arredondados combinando com os seus botões */
+    box-sizing: border-box;     /* Evita que o padding altere o tamanho final da caixa */
+}
+
+/* Garante que o texto dentro da caixa herde a formatação limpa de terminal */
+.conteudo-central p {
+    color: #00ffcc;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin: 0;
+    white-space: pre-line;      /* Respeita as quebras de linha que você der no HTML */
+}
+
+.conteudo-principio {
+    width: 10%;
+    /*height: calc(100% - 50px);*/
+    /*display: flex;*/
+    align-items: center;
+    justify-content: center; /* ⚡ Garante o alinhamento horizontal no centro */
+    gap: 15px;
+    margin-bottom: 20px;
+    /*max-width: 1024px;*/
+    /*max-height: 768px;*/
+    border: 2px solid #00ffcc;
+    /*background: #000;*/
+    background-color: rgba(13, 17, 23, 0.92); /* Proteção contra a chuva Matrix */
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+    transition: transform 0.2s ease;
+}
+
+/* ==========================================================================
+   4. ROLAGEM DE TELA CUSTOMIZADA
+   ========================================================================== */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #0d1117;
+}
+::-webkit-scrollbar-thumb {
+    background: #00ffcc;
+    border-radius: 3px;
+}
+
