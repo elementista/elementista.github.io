@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Essencial para Buscadores -->
+    <title>Elementista | Arch GNOME Legacy Respin (Elementista)</title>
+    <meta name="description" content="Arch GNOME Legacy Respin (Elementista). Manual técnico de bancada, especificações e espelhos oficiais.
+Otimizado para 4 GB de RAM e HD mecânico.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Elementista (Jorge)">
+    <link rel="canonical" href="https://elementista.github.io/">
+
+    <!-- Open Graph / Facebook / Buscadores Modernos -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://elementista.github.io/">
+    <meta property="og:title" content="Elementista | Tecnologia, Debloat e Código Aberto">
+    <meta property="og:description" content="Espaço independente dedicado a hardware, debloat de sistemas, desenvolvimento em Python/JS e preservação de jogos em Flash.">
+    <meta property="og:image" content="imagens/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+
+    <!-- Twitter Cards -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://elementista.github.io/">
+    <meta property="twitter:title" content="Elementista | Tecnologia, Debloat e Código Aberto">
+    <meta property="twitter:description" content="Espaço independente dedicado a hardware, debloat de sistemas, desenvolvimento em Python/JS e preservação de jogos em Flash.">
+    <meta property="twitter:image" content="imagens/preview.png">
+
+
+    <!-- Favicon (Ícone da aba do navegador) -->
+    <link rel="icon" type="image/png" href="imagens/favicon.png">
+
+    <!-- Vínculo com o arquivo CSS Externo -->
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<header>
+    <!-- 1. Bloco de Identidade do Topo -->
+    <div class="header-identidade"><br>
+        <div class="banner-container">
+            <!-- O escudo que você enviou salvo localmente -->
+            <img src="imagens/escudo.png" alt="Escudo Elementista" class="banner-escudo" width="128" height="128"> 
+            <!-- O nome do lado do escudo -->
+            <span class="banner-nome">Elementista</span>
+        </div>
+        
+        <!-- O Slogan Oficial LOGO ABAIXO do nome -->
+        <h1 class="banner-slogan" style="color: #39ff14;">[ Minha Matrix. Meu Mundo. Minhas Regras. Seu Espaço. ]</h1>
+        
+        <!-- A Descrição do Espaço LOGO ABAIXO do slogan -->
+        <p class="banner-descricao">Espaço dedicado a tecnologia e desenvolvimento de utilitários portáteis.</p>
+    </div>
+
+    <!-- 2. A Barra do Menu Isolada na Base -->
+    <nav class="menu-navegacao">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projetos.html">Projetos</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="arch-legacy.html" class="active">Arch-legacy</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="conteudo-principal">
+    <div class="conteudo-central">
+
+<h2 style="color: #ff9900; margin-top: 0;">💿 Arch GNOME Legacy Respin (Elementista)</h2>
+<p>Manual técnico de bancada, especificações e espelhos oficiais.<br /> Otimizado para <strong>4 GB de RAM e HD mecânico</strong>.</p>
+
+<br><hr><br>
+
+<!-- ÍNDICE DE NAVEGAÇÃO RÁPIDA -->
+<div id="indice-box" class="indice-box">
+    <strong style="color: #00ffcc;">📌 Navegação Rápida (Clique para ir direto ao tópico):</strong>
+    <ul class="indice-lista">
+        <li><a href="#downloads" style="color: #39ff14; text-decoration: none; font-weight: bold; font-size: 0.9rem;">1. Downloads & SHA-256</a></li>
+        <li><a href="#hardware" style="color: #39ff14; text-decoration: none; font-weight: bold; font-size: 0.9rem;">2. Hardware Validado</a></li>
+        <li><a href="#instalacao" style="color: #39ff14; text-decoration: none; font-weight: bold; font-size: 0.9rem;">3. Particionamento (Ext4 & ZRAM)</a></li>
+        <li><a href="#atualizar" style="color: #39ff14; text-decoration: none; font-weight: bold; font-size: 0.9rem;">4. Atualizar o Sistema</a></li>
+        <li><a href="#instalar-apps" style="color: #39ff14; text-decoration: none; font-weight: bold; font-size: 0.9rem;">5. Instalar Programas & Codecs</a></li>
+        <li><a href="#remover-apps" style="color: #39ff14; text-decoration: none; font-weight: bold; font-size: 0.9rem;">6. Remover Programas (Limpeza)</a></li>
+        <li><a href="#boot-grub" style="color: #39ff14; text-decoration: none; font-weight: bold; font-size: 0.9rem;">7. Modificar Boot (Dual Boot GRUB)</a></li>
+        <li><a href="#kernels" style="color: #39ff14; text-decoration: none; font-weight: bold; font-size: 0.9rem;">8. Kernels & Avisos Críticos</a></li>
+    </ul>
+</div>
+
+<br><hr><br>
+
+<!-- ####################################################### -->
+<!-- Botões de Download Padronizados -->
+<section id="downloads" class="secao-manual"><br><br>
+    <h3 style="color: #00ffcc; margin-top: 0;">📥 1. Downloads Oficiais e Integridade (SHA-256)</h3>
+    <p>Baixe a ISO (~3,8 GB) nos espelhos oficiais abaixo e valide o SHA-256:</p>
+    
+    <div style="display: flex; flex-direction: column; gap: 12px; margin: 18px 0;">
+    
+        <a href="https://archive.org/details/arch-gnome-legacy-elementista-x86_64" target="_blank" rel="noopener noreferrer" 
+           onmouseover="this.style.color='#000000'; this.querySelector('.sub').style.color='#000000';" 
+           onmouseout="this.style.color='#ffffff'; this.querySelector('.sub').style.color='#e8f5e9';"
+           style="background-color: #2e7d32; color: #ffffff; border: 1px solid #388e3c; padding: 14px 20px; text-decoration: none; border-radius: 6px; text-align: center; display: block;">
+            <div style="font-weight: bold; font-size: 1em; letter-spacing: 0.5px;">🐧 BAIXAR ISO NO INTERNET ARCHIVE<br>(HTTP DIRETO / TORRENT)</div>
+            <div class="sub" style="font-size: 0.85em; color: #e8f5e9; margin-top: 4px;">arch-gnome-legacy-elementista-x86_64.iso (~3,8 GB)</div>
+        </a>
+
+        <a href="https://sourceforge.net/projects/arch-legacy-elementista/files/arch-gnome-legacy-elementista-x86_64.iso/download" target="_blank" rel="noopener noreferrer" 
+           onmouseover="this.style.color='#000000'; this.querySelector('.sub').style.color='#000000';" 
+           onmouseout="this.style.color='#ffffff'; this.querySelector('.sub').style.color='#e8f5e9';"
+           style="background-color: #2e7d32; color: #ffffff; border: 1px solid #388e3c; padding: 14px 20px; text-decoration: none; border-radius: 6px; text-align: center; display: block;">
+            <div style="font-weight: bold; font-size: 1em; letter-spacing: 0.5px;">🚀 BAIXAR NO SOURCEFORGE<br>(DOWNLOAD DIRETO)</div>
+            <div class="sub" style="font-size: 0.85em; color: #e8f5e9; margin-top: 4px;">Servidores Globais de Alta Velocidade (~3,8 GB)</div>
+        </a>
+
+        <a href="https://github.com/elementista/arch-gnome-legacy-elementista-x86_64" target="_blank" rel="noopener noreferrer" 
+           onmouseover="this.style.color='#000000'; this.querySelector('.sub').style.color='#000000';" 
+           onmouseout="this.style.color='#ffffff'; this.querySelector('.sub').style.color='#e8f5e9';"
+           style="background-color: #2e7d32; color: #ffffff; border: 1px solid #388e3c; padding: 14px 20px; text-decoration: none; border-radius: 6px; text-align: center; display: block;">
+            <div style="font-weight: bold; font-size: 1em; letter-spacing: 0.5px;">💻 REPOSITÓRIO OFICIAL NO GITHUB<br>(CÓDIGO E DOCUMENTAÇÃO)</div>
+            <div class="sub" style="font-size: 0.85em; color: #e8f5e9; margin-top: 4px;">https://github.com/elementista/arch-gnome-legacy-elementista-x86_64</div>
+        </a>
+    </div>
+
+    <!-- Caixa de Verificação SHA-256 com Botão Copiar -->
+    <p style="margin-top: 20px;"><strong>🛡 Verificação de Integridade (SHA-256):</strong><br>
+    Antes de gravar a ISO no pendrive, confira se o arquivo não veio corrompido. Siga o passo a passo do seu sistema:</p>
+
+    <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0; position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+            <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Assinatura SHA-256 Oficial (Compare com este código)</span>
+            <button type="button" 
+                    onclick="navigator.clipboard.writeText('8627c82802ee784a606d837a1602becf8df56d6272f6e5512406b400aca5309f'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText='📋 Copiar Hash', 2000);" 
+                    style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+                📋 Copiar Hash
+            </button>
+        </div>
+        <code style="color: #e6edf3; word-break: break-all; font-family: monospace; font-size: 0.95em;">8627c82802ee784a606d837a1602becf8df56d6272f6e5512406b400aca5309f</code>
+    </div>
+
+    <!-- EXEMPLO 1: LINUX -->
+    <p style="margin-top: 18px;"><strong>1. Como verificar no Linux:</strong></p>
+    <ol style="font-size: 0.94em; color: #c9d1d9;">
+        <li>Abra o <strong>Terminal</strong> no seu sistema.</li>
+        <li>Entre na pasta onde salvou o arquivo (ex: <code>Downloads</code>) e rode o comando abaixo:</li>
+    </ol>
+    <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 8px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+            <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Comando no Terminal (Linux)</span>
+            <button type="button" 
+                    onclick="navigator.clipboard.writeText('cd ~/Downloads && sha256sum arch-gnome-legacy-elementista-x86_64.iso'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText='📋 Copiar Comando', 2000);" 
+                    style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+                📋 Copiar Comando
+            </button>
+        </div>
+        <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">cd ~/Downloads && sha256sum arch-gnome-legacy-elementista-x86_64.iso</code>
+    </div>
+    <p style="font-size: 0.9em; color: #8b949e; margin: 4px 0 14px 0;"><strong>Saída esperada na tela:</strong><br>
+    <code style="color: #00ff66; word-break: break-all;">8627c82802ee784a606d837a1602becf8df56d6272f6e5512406b400aca5309f  arch-gnome-legacy-elementista-x86_64.iso</code></p>
+
+    <!-- EXEMPLO 2: WINDOWS -->
+    <p style="margin-top: 18px;"><strong>2. Como verificar no Windows (10 ou 11):</strong></p>
+    <ol style="font-size: 0.94em; color: #c9d1d9;">
+        <li>Clique no menu Iniciar, digite <strong>PowerShell</strong> e abra-o.</li>
+        <li>Cole o comando abaixo e aperte <strong>Enter</strong> (aguarde alguns segundos enquanto ele calcula):</li>
+    </ol>
+    <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 8px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+            <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Comando no PowerShell (Windows)</span>
+            <button type="button" 
+                    onclick="navigator.clipboard.writeText('cd $HOME\\Downloads; Get-FileHash arch-gnome-legacy-elementista-x86_64.iso -Algorithm SHA256'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText='📋 Copiar Comando', 2000);" 
+                    style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+                📋 Copiar Comando
+            </button>
+        </div>
+        <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">cd $HOME\Downloads; Get-FileHash arch-gnome-legacy-elementista-x86_64.iso -Algorithm SHA256</code>
+    </div>
+    <p style="font-size: 0.9em; color: #8b949e; margin: 4px 0 14px 0;"><strong>Saída esperada na tela (o Windows mostra em letras maiúsculas, mas é o mesmo código):</strong><br>
+    <code style="color: #00ff66; word-break: break-all;">SHA256 &nbsp; 8627C82802EE784A606D837A1602BECF8DF56D6272F6E5512406B400ACA5309F</code></p>
+
+    <!-- EXEMPLO 3: MACOS -->
+    <p style="margin-top: 18px;"><strong>3. Como verificar no macOS:</strong></p>
+    <ol style="font-size: 0.94em; color: #c9d1d9;">
+        <li>Abra o Spotlight (<strong>Cmd + Espaço</strong>), digite <strong>Terminal</strong> e aperte Enter.</li>
+        <li>Execute o comando abaixo para conferir o arquivo na pasta Downloads:</li>
+    </ol>
+    <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 8px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+            <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Comando no Terminal (macOS)</span>
+            <button type="button" 
+                    onclick="navigator.clipboard.writeText('cd ~/Downloads && shasum -a 256 arch-gnome-legacy-elementista-x86_64.iso'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText='📋 Copiar Comando', 2000);" 
+                    style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+                📋 Copiar Comando
+            </button>
+        </div>
+        <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">cd ~/Downloads && shasum -a 256 arch-gnome-legacy-elementista-x86_64.iso</code>
+    </div>
+    <p style="font-size: 0.9em; color: #8b949e; margin: 4px 0 14px 0;"><strong>Saída esperada na tela:</strong><br>
+    <code style="color: #00ff66; word-break: break-all;">8627c82802ee784a606d837a1602becf8df56d6272f6e5512406b400aca5309f  arch-gnome-legacy-elementista-x86_64.iso</code></p>
+
+    <a href="#indice-box" class="voltar-topo" style="color: #ff8c00;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#ff8c00';">↑ Voltar ao índice</a>
+</section>
+
+<br><hr><br><br><br>      
+        
+        <!-- 2. HARDWARE VALIDADO -->
+<section id="hardware" class="secao-manual"><br><br>
+    <h3 style="color: #00ffcc; margin-top: 0;">🧪 2. Testes Extremos na Bancada (Sem Enfeitar o Pavão)</h3>
+    <p>Os ajustes de memória e compatibilidade gráfica desta ISO foram testados exclusivamente nos seguintes equipamentos físicos (<strong>4 GB de RAM</strong> e armazenamento legado):</p>
+
+    <ul>
+        <li><strong style="color: #39ff14;">Positivo S14BW01</strong> — Intel Celeron (4 GB RAM)</li>
+        <li><strong style="color: #39ff14;">Acer Aspire E1-510</strong> — Intel Celeron Bay Trail (4 GB RAM)</li>
+        <li><strong style="color: #39ff14;">Samsung RV415</strong> — AMD Série E / Radeon HD 6310 (4 GB RAM)</li>
+        <li><strong style="color: #39ff14;">Lenovo ThinkCentre M93p</strong> — Bancada de desenvolvimento e testes contínuos em HD mecânico</li>
+    </ul>
+
+    <p><em style="color: #ff8c00;">Nota de Transparência: Embora a ISO funcione em qualquer computador compatível com <code>x86_64</code>, a validação oficial antes da publicação foi realizada estritamente nos modelos acima.</em></p>
+
+    <h4 style="color: #00ffcc; margin-top: 20px;">O Fator Processador e Gráficos (Por que 4 GB de RAM não são todos iguais)</h4>
+
+    <ul>
+        <li><strong style="color: #39ff14;">Positivo S14BW01 (O Sobrevivente — 7 Dias no Live CD):</strong> Mesmo sendo uma marca frequentemente subestimada, este modelo entregou o melhor resultado. Rodando em modo Live CD direto de um pendrive com <strong>Ventoy</strong> (sem HD instalado na máquina e apenas com 4 GB de RAM), permaneceu <strong>7 dias seguidos em funcionamento contínuo</strong>, reproduzindo vídeos e navegando sem travar.</li><br>
+        <li><strong style="color: #39ff14;">Acer Aspire E1-510 e Samsung RV415:</strong> Funcionam de forma estável para uso diário, mas suas arquiteturas mais antigas exigem evitar o acúmulo de muitas abas pesadas abertas simultaneamente.</li><br>
+        <li><strong style="color: #39ff14;">Teste de 3 Telas Simultâneas (Tela Interna + VGA + HDMI):</strong> O áudio e vídeo <strong>HDMI</strong> já vêm pré-configurados e funcionais na ISO. Em teste de estresse usando três saídas de vídeo ativas ao mesmo tempo, o <strong>Positivo S14BW01</strong> suportou todas as telas ativas com estabilidade, enquanto os controladores gráficos mais antigos do Samsung RV415 e Acer E1-510 possuem limitação física de hardware para gerenciar três monitores simultâneos.</li>
+    </ul>
+
+    <p style="color: #ff8c00;"><strong>Dica rápida de áudio:</strong> Se conectar uma TV ou monitor via HDMI e o som continuar saindo no notebook, abra <strong>Configurações &gt; Som</strong> no GNOME e selecione a saída <strong>HDMI / DisplayPort</strong>.</p>
+
+<br>
+
+    <a href="#indice-box" class="voltar-topo" style="color: #ff8c00;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#ff8c00';">↑ Voltar ao índice</a>
+</section>
+
+<br><hr><br><br><br>        
+        
+  <!-- 3. PARTICIONAMENTO NO CALAMARES -->
+<section id="instalacao" class="secao-manual"><br><br>
+    <h3 style="color: #00ffcc; margin-top: 0;">💽 3. Instalação e Particionamento (Ext4 vs. Btrfs e Swap)</h3>
+    <p>Ao avançar no instalador gráfico <strong>Calamares</strong>, a escolha correta do particionamento define a velocidade do sistema no dia a dia:</p>
+
+    <h4 style="color: #00ffcc; margin-top: 20px;">Sistema de Arquivos: Use Ext4 em HD Mecânico</h4>
+    <ul>
+        <li><strong style="color: #ff8c00;">Ext4 (Recomendado para HDs Mecânicos e Máquinas Legadas):</strong> Sistema de arquivos clássico e maduro do Linux. Grava dados de forma direta e sequencial, exigindo menos movimentação do disco e evitando lentidão em segundo plano. <strong>Escolha obrigatória para HDs mecânicos.</strong></li>
+        
+<br>
+
+        <li><strong style="color: #ff8c00;">Btrfs (Indicado apenas para SSDs):</strong> Utiliza <em>Copy-on-Write</em> e tarefas de manutenção em segundo plano que causam fragmentação e lentidão em HDs mecânicos. Use apenas se tiver um SSD e souber gerenciar <em>snapshots</em>.</li>
+    </ul>
+
+    <h4 style="color: #00ffcc; margin-top: 20px;">Memória Swap: Não Crie Partição Swap no Disco</h4>
+    <ul>
+        <li><strong style="color: #ff8c00;">Deixe sem partição Swap ("Sem Swap") durante a instalação.</strong></li>
+        <br>
+        <li>Criar Swap tradicional em HD mecânico faz o disco bater 100% de uso e travar o computador quando a memória RAM encher.</li>
+        <br>
+        <li><strong style="color: #ff8c00;">Solução nativa da ISO (ZRAM):</strong> O sistema já vem configurado de fábrica com <strong style="color: #ff8c00;">ZRAM (<code>zstd</code> na proporção 1:1 da RAM)</strong>, criando uma área de swap compactada dentro da própria memória RAM — dezenas de vezes mais rápida que qualquer HD.</li>
+    </ul>
+
+    <a href="#indice-box" class="voltar-topo" style="color: #ff8c00;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#ff8c00';">↑ Voltar ao índice</a>
+</section>
+
+<br><hr><br><br><br>
+
+<!-- 4. ATUALIZAR -->
+<section id="atualizar" class="secao-manual"><br><br>
+    <h3 style="color: #00ffcc; margin-top: 0;">🔄 4. Atualização Pós-Instalação (Mesmo Meses ou Anos Depois)</h3>
+    <p>Como o Arch Linux segue o modelo <em>rolling release</em>, após concluir a instalação no HD ou SSD da máquina cliente ou de bancada, abra o terminal e execute o comando pronto embutido no sistema:</p>
+
+    <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+            <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux) — Atalho automático (Recomendado)</span>
+            <button type="button" 
+                    onclick="navigator.clipboard.writeText('atualizar-arch'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText='📋 Copiar Comando', 2000);" 
+                    style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+                📋 Copiar Comando
+            </button>
+        </div>
+        <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">atualizar-arch</code>
+    </div>
+
+    <p style="margin-top: 16px;"><strong>O que o comando <code style="color: #ff8c00;">atualizar-arch</code> executa por baixo dos panos (ou caso prefira rodar manualmente etapa por etapa):</strong></p>
+<br>
+    <p><strong>1. Renovar as chaves de segurança (evita erros de assinatura digital por tempo decorrido):</strong></p>
+    <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+            <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux) — Etapa 1: Chaves</span>
+            <button type="button" 
+                    onclick="navigator.clipboard.writeText('sudo pacman -Sy archlinux-keyring'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText='📋 Copiar Comando', 2000);" 
+                    style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+                📋 Copiar Comando
+            </button>
+        </div>
+        <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -Sy archlinux-keyring</code>
+    </div>
+<br>
+    <p><strong>2. Iniciar a atualização completa do sistema:</strong></p>
+    <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+            <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux) — Etapa 2: Atualização</span>
+            <button type="button" 
+                    onclick="navigator.clipboard.writeText('sudo pacman -Syu'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText='📋 Copiar Comando', 2000);" 
+                    style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+                📋 Copiar Comando
+            </button>
+        </div>
+        <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -Syu</code>
+    </div>
+<br>
+    <ul>
+        <li>O script renova automaticamente as chaves de segurança (<code style="color: #ff8c00;">archlinux-keyring</code>) para evitar erros de assinatura digital por tempo decorrido e, em seguida, inicia a atualização completa do sistema (<code style="color: #ff8c00;">pacman -Syu</code>).</li>
+    </ul>
+
+    <a href="#indice-box" class="voltar-topo" style="color: #ff8c00;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#ff8c00';">↑ Voltar ao índice</a>
+</section>
+
+<br><hr><br><br><br>
+
+<!-- 5. INSTALAR PROGRAMAS (PARTE 1: CODECS E COMPACTADORES) -->
+<section id="instalar-apps" class="secao-manual"><br><br>
+
+    <h3 style="color: #00ffcc; margin-top: 0;">🛠 5. Instalar Programas e Codecs (Via Terminal)</h3>
+    
+    <div style="background-color: #1a1400; border-left: 4px solid #ff9900; border-top: 1px solid #4d3800; border-right: 1px solid #4d3800; border-bottom: 1px solid #4d3800; border-radius: 4px; padding: 14px 16px; margin: 16px 0;">
+  <strong style="color: #ff9900; display: block; margin-bottom: 8px; font-size: 0.98em;">⚠️ AVISO SOBRE A LOJA GRÁFICA (GNOME SOFTWARE) VS. TERMINAL (<code>pacman</code>):</strong>
+  <p style="margin: 0 0 8px 0; color: #e6edf3; font-size: 0.94em;">A loja gráfica acompanha o sistema por fazer parte do ambiente padrão do GNOME, mas não é o gerenciador oficial do Arch Linux e instala majoritariamente pacotes <strong>Flatpak</strong>. Em computadores com <strong>4 GB de RAM e HD mecânico</strong>, pacotes Flatpak consomem muito mais memória, espaço em disco e demoram mais para abrir.</p>
+  <p style="margin: 0; color: #ffcc66; font-size: 0.94em;"><strong>Conheça os limites do seu hardware:</strong> dê preferência total aos comandos nativos do terminal abaixo.</p>
+</div>
+
+    
+    <p>Para manter a ISO leve, alguns complementos ficaram de fora. Dê preferência ao terminal para economizar RAM e espaço em disco (evitando Flatpaks pesados). Instale apenas o que precisar:</p>
+
+    <h4 style="color: #ff8c00; margin-top: 20px;">Pacotes Complementares Recomendados (Instale um por vez)</h4>
+    
+<hr>
+
+    <p><strong>Codecs completos de áudio e vídeo (FFmpeg e formatos restritos):</strong></p>
+    <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+            <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux)</span>
+            <button type="button" 
+                    onclick="navigator.clipboard.writeText('sudo pacman -S gst-libav gst-plugins-ugly'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText='📋 Copiar Comando', 2000);" 
+                    style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+                📋 Copiar Comando
+            </button>
+        </div>
+        <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -S gst-libav gst-plugins-ugly</code>
+    </div>
+
+<hr>
+
+    <p><strong>Aceleração de vídeo por hardware (VA-API — reduz o uso do processador em vídeos):</strong></p>
+    <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+            <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux)</span>
+            <button type="button" 
+                    onclick="navigator.clipboard.writeText('sudo pacman -S gst-plugin-va'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText='📋 Copiar Comando', 2000);" 
+                    style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+                📋 Copiar Comando
+            </button>
+        </div>
+        <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -S gst-plugin-va</code>
+    </div>
+
+<hr>
+
+    <p><strong>Suporte completo para arquivos compactados (<code>.rar</code>, <code>.zip</code>, <code>.7z</code>):</strong></p>
+    <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+            <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux)</span>
+            <button type="button" 
+                    onclick="navigator.clipboard.writeText('sudo pacman -S p7zip unrar file-roller'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText='📋 Copiar Comando', 2000);" 
+                    style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+                📋 Copiar Comando
+            </button>
+        </div>
+        <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -S p7zip unrar file-roller</code>
+    </div>
+    
+<hr>
+    
+  <!-- PARTE 2: NAVEGADORES WEB -->
+  <h4 style="color: #ff8c00; margin-top: 25px;">Navegadores Web (Conforme a Sua Preferência)</h4>
+  <p>A ISO já traz o <strong>Brave Browser</strong> instalado.<br> Abaixo coloquei os comandos para a instalação dos mais usados, caso prefira outras opções:</p>
+
+<hr>
+
+  <p><strong>Chromium (100% Código Aberto — Repositório Oficial do Arch):</strong></p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux)</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('sudo pacman -S chromium'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -S chromium</code>
+  </div>
+
+<hr>
+
+  <p><strong>Firefox (Oficial em Português — Repositório Oficial do Arch):</strong></p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux)</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('sudo pacman -S firefox firefox-i18n-pt-br'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -S firefox firefox-i18n-pt-br</code>
+  </div>
+
+<hr>
+
+  <p><strong>Google Chrome (Binário Oficial da Google — via AUR):</strong></p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux — AUR)</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('yay -S google-chrome'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">yay -S google-chrome</code>
+  </div>
+
+<hr>
+
+  <p><strong>Microsoft Edge (Binário Oficial da Microsoft — via AUR):</strong></p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux — AUR)</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('yay -S microsoft-edge-stable-bin'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">yay -S microsoft-edge-stable-bin</code>
+  </div>
+
+<hr>
+
+  <p style="background-color: #000000; margin-top: 20px;"><strong>Dica para Economizar Memória RAM <br>(Atalhos Web para WhatsApp, Discord e YouTube):</strong><br>
+  Em vez de instalar aplicativos pesados que consomem muita RAM em segundo plano, transforme sites em janelas próprias usando o <strong>Chromium</strong> (ou Brave):</p>
+  <ol>
+    <li>Abra o site desejado (ex: WhatsApp Web ou Discord) e faça login.</li>
+    <li>Clique nos <strong>três pontinhos (⋮)</strong> no canto superior direito.</li>
+    <li>Vá em <strong>Salvar e compartilhar</strong> (ou <em>Mais ferramentas</em>) &gt; <strong>Criar atalho...</strong></li>
+    <li>Dê um nome, marque a caixa <strong>"Abrir como janela"</strong> e clique em <strong>Criar</strong>.</li>
+    <li>Clique com o botão direito no ícone aberto na barra inferior e selecione <strong>Fixar no painel</strong>.</li>
+  </ol>
+
+<hr>  
+  
+  <!-- PARTE 3: OUTROS PROGRAMAS E PERIFÉRICOS OPCIONAIS style="color: #ff8c00;" -->
+  <h4 style="color: #ff8c00; margin-top: 25px;">Outros Programas e Periféricos Opcionais</h4>
+
+<hr>
+
+  <p><strong>OBS Studio (Gravação de tela e transmissões — Oficial):</strong></p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux)</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('sudo pacman -S obs-studio'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -S obs-studio</code>
+  </div>
+  <p><em>(Dica: No GNOME, adicione a fonte "Captura de Tela (PipeWire)").</em></p>
+
+<hr>
+
+  <p><strong>LibreOffice em Português (Textos, planilhas e slides):</strong></p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux)</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('sudo pacman -S libreoffice-fresh libreoffice-fresh-pt-br'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -S libreoffice-fresh libreoffice-fresh-pt-br</code>
+  </div>
+
+<hr>
+
+  <p><strong>Editor de texto e planilhas ultraleves (para hardware muito antigo):</strong></p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux)</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('sudo pacman -S abiword gnumeric'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -S abiword gnumeric</code>
+  </div>
+
+<hr>
+
+  <p><strong>Suporte a Impressoras e Scanners:</strong></p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux)</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('sudo pacman -S cups system-config-printer\nsudo systemctl enable --now cups'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em; display: block; white-space: pre-wrap;">sudo pacman -S cups system-config-printer
+sudo systemctl enable --now cups</code>
+  </div>
+
+<hr>
+
+  <p><strong>Suporte a Bluetooth:</strong></p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux)</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('sudo pacman -S bluez bluez-utils\nsudo systemctl enable --now bluetooth'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em; display: block; white-space: pre-wrap;">sudo pacman -S bluez bluez-utils
+sudo systemctl enable --now bluetooth</code>
+  </div>
+
+<hr>
+
+  <a href="#indice-box" class="voltar-topo" style="color: #ff8c00;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#ff8c00';">↑ Voltar ao índice</a>
+</section>
+
+<br><hr><br><br><br>
+
+<!-- 6. REMOVER PROGRAMAS -->
+<section id="remover-apps" class="secao-manual"><br><br>
+  <h3 style="color: #00ffcc; margin-top: 0;">🧹 6. Remover Programas e Limpar Cache</h3>
+  <p>Para desinstalar um programa junto com suas dependências não utilizadas:</p>
+
+<hr>
+
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux) — Comando padrão</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('sudo pacman -Rns nome-do-pacote'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -Rns nome-do-pacote</code>
+  </div>
+
+<hr>
+
+  <p><strong style="color: #ff8c00;">Exemplo prático (removendo o navegador Brave):</strong></p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux) — Exemplo com Brave</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('sudo pacman -Rns brave-bin'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -Rns brave-bin</code>
+  </div>
+
+<hr>
+
+  <p>Para limpar pacotes antigos baixados e liberar espaço no HD:</p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux) — Limpar cache</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('sudo pacman -Sc'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -Sc</code>
+  </div>
+
+<hr>
+
+  <a href="#indice-box" class="voltar-topo" style="color: #ff8c00;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#ff8c00';">↑ Voltar ao índice</a>
+</section>
+
+<br><hr><br><br><br>
+
+<!-- 7. MODIFICAR BOOT (GRUB) -->
+<section id="boot-grub" class="secao-manual"><br><br>
+  <h3 style="color: #00ffcc; margin-top: 0;">⚙️ 7. Configuração Opcional do GRUB (Dual Boot com Windows)</h3>
+
+  <div style="background-color: #1a1400; border-left: 4px solid #ff9900; border-top: 1px solid #4d3800; border-right: 1px solid #4d3800; border-bottom: 1px solid #4d3800; border-radius: 4px; padding: 14px 16px; margin: 16px 0;">
+    <strong style="color: #ff9900; display: block; margin-bottom: 8px; font-size: 0.98em;">⚠️ ATENÇÃO — CUIDADO AO EDITAR O BOOT:</strong>
+    <p style="margin: 0; color: #e6edf3; font-size: 0.94em;">Altere apenas a linha indicada abaixo no arquivo <code>/etc/default/grub</code>. Nunca modifique <code>/boot/grub/grub.cfg</code> diretamente.</p>
+  </div>
+
+  <p>Por segurança, o Arch Linux vem com a detecção de outros sistemas operacionais desativada. Caso tenha instalado o sistema ao lado do Windows e ele não apareça no menu de boot:</p>
+
+  <p><strong>1. Instale o detector de sistemas (<code>os-prober</code>):</strong></p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux)</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('sudo pacman -S os-prober'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo pacman -S os-prober</code>
+  </div>
+
+  <p><strong>2. Abra o arquivo de configuração principal com o <code>nano</code>:</strong></p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux)</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('sudo nano /etc/default/grub'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo nano /etc/default/grub</code>
+  </div>
+
+  <p><strong>3. Desça até o final do arquivo e altere a linha:</strong></p>
+  <ul>
+    <li><strong>De:</strong> <code>GRUB_DISABLE_OS_PROBER=true</code></li>
+    <li><strong>Para:</strong> <code>GRUB_DISABLE_OS_PROBER=false</code></li>
+  </ul>
+
+  <p><strong>4. Salve e feche o <code>nano</code>:</strong></p>
+  <ul>
+    <li>Aperte <strong>Ctrl + O</strong> e depois <strong>Enter</strong> para salvar.</li>
+    <li>Aperte <strong>Ctrl + X</strong> para sair.</li>
+  </ul>
+
+  <p><strong>5. Atualize o menu de boot:</strong></p>
+  <div style="background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; margin: 12px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 6px;">
+      <span style="color: #8b949e; font-size: 0.85em; font-family: monospace;">Terminal (Linux)</span>
+      <button type="button"
+              onclick="navigator.clipboard.writeText('sudo grub-mkconfig -o /boot/grub/grub.cfg'); this.innerText='✔ Copiado!'; setTimeout(() => this.innerText=' Copiar Comando', 2000);"
+              style="background-color: #21262d; color: #00ffcc; border: 1px solid #00ffcc; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: bold;">
+              Copiar Comando
+      </button>
+    </div>
+    <code style="color: #e6edf3; font-family: monospace; font-size: 0.95em;">sudo grub-mkconfig -o /boot/grub/grub.cfg</code>
+  </div>
+  <p><em>(Aguarde o terminal concluir e listar os sistemas encontrados antes de reiniciar).</em></p>
+
+  <a href="#indice-box" class="voltar-topo" style="color: #ff8c00;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#ff8c00';">↑ Voltar ao índice</a>
+</section>
+
+<br><hr><br><br><br>
+
+<!-- 8. KERNELS -->
+<section id="kernels" class="secao-manual"><br><br>
+  <h3 style="color: #00ffcc; margin-top: 0;">⚠️ 8. Arquitetura Base, Kernels e Boot (Leia Antes de Modificar)</h3>
+  <p style="color: #ff8c00;">Esta imagem foi testada no limite para funcionar bem de fábrica. Antes de instalar kernels alternativos ou alterar arquivos de inicialização por recomendação de terceiros, entenda como o sistema opera:</p>
+
+  <h4 style="color: #00ffcc; margin-top: 20px;">Política de Kernels (<code style="color: #ff8c00;">linux-lts</code> + <code style="color: #ff8c00;">linux</code>)</h4>
+  <p>A ISO entrega dois kernels oficiais do Arch Linux instalados lado a lado:</p>
+  <ul>
+    <li><strong style="color: #ff8c00;"><code>linux-lts</code> (Padrão Principal):</strong> Configurado como primeira opção no menu de boot. Oferece suporte de longo prazo, máxima estabilidade e compatibilidade comprovada com controladoras, placas de rede e vídeos antigos.</li>
+    
+    <br>
+    
+    <li><strong><code style="color: #ff8c00;">linux</code> (Kernel Principal / Secundário):</strong> Disponível dentro de <em>"Opções avançadas para Arch Linux"</em> no menu de boot como alternativa de segurança caso algum periférico mais recente exija um kernel mais novo.</li>
+  </ul>
+
+  <div style="background-color: #1a1400; border-left: 4px solid #ff9900; border-top: 1px solid #4d3800; border-right: 1px solid #4d3800; border-bottom: 1px solid #4d3800; border-radius: 4px; padding: 14px 16px; margin: 16px 0;">
+    <strong style="color: #ff9900; display: block; margin-bottom: 8px; font-size: 0.98em;">⚠️ AVISO IMPORTANTE SOBRE KERNELS DE TERCEIROS:</strong>
+    <p style="margin: 0; color: #e6edf3; font-size: 0.94em;">Não instale kernels modificados (como Zen, XanMod, Liquorix ou compilados manualmente) sem saber gerenciar módulos <strong>DKMS</strong> e imagens <code>initramfs</code>. O suporte desta ISO cobre exclusivamente os dois kernels oficiais (<code style="color: #ff8c00;">linux-lts</code> e <code style="color: #ff8c00;">linux</code>) entregues na mídia.</p>
+  </div>
+
+  <h4 style="color: #ffcc00; margin-top: 20px;">Gerenciador de Boot (GRUB) — Zona de Máximo Cuidado</h4>
+  <p>O menu de inicialização inclui atalhos úteis de bancada (<em style="color: #ff8c00;">Desligar o Computador</em> e <em style="color: #ff8c00;">Reiniciar o Computador</em>) e carrega automaticamente o <em style="color: #ff8c00;">microcode</em> do processador.</p>
+  <ul>
+    <li><strong>NUNCA edite o arquivo <code>/boot/grub/grub.cfg</code> diretamente.</strong> Ele é gerado automaticamente pelo sistema. Qualquer edição manual ou caractere apagado nesse arquivo impede o computador de ligar.</li>
+
+<br>    
+
+    <li style="color: #39ff14;"><strong>Toda edição do GRUB deve ser feita exclusivamente no arquivo <code style="color: #ff8c00;">/etc/default/grub</code></strong> (e aplicada em seguida com <code style="color: #ff8c00;">sudo grub-mkconfig -o /boot/grub/grub.cfg</code>).</li>
+
+<br>
+
+    <li><strong>Se errar ao editar qualquer arquivo no terminal (<code style="color: #ff8c00;">nano</code>):</strong> Aperte <strong>Ctrl + X</strong> e depois a tecla <strong>N</strong> (Não) para sair sem salvar e manter o sistema intacto.</li>
+  </ul>
+
+  <a href="#indice-box" class="voltar-topo" style="color: #ff8c00;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#ff8c00';">↑ Voltar ao índice</a>
+</section>
+
+<br><br><br>
+
+<!-- NOTA FINAL / ENCERRAMENTO DO MANUAL -->
+<footer style="background-color: #000000; border-top: 1px solid #30363d; margin-top: 40px; padding: 20px 16px 30px 16px; color: #0b949e; font-size: 0.9em;">
+  <p style="margin: 0 0 8px 0;"><strong style="color: #ffffff;">Arch GNOME Legacy Respin (Elementista)</strong></p>
+  <hr style="border: 0; border-top: 1px solid #30363d; margin: 10px 0;">
+  <p style="margin: 0 0 8px 0;">Documentação Técnica de Bancada.</p>
+  <p style="margin: 0 0 8px 0;">Projeto independente otimizado para hardware legado (<code>x86_64</code>, 4 GB de RAM e HD mecânico).</p>
+  <p style="margin: 0 0 12px 0;"><strong style="color: #ff3333;">Não afiliado oficialmente ao projeto Arch Linux.</strong></p>
+  <p style="margin: 0; line-height: 1.8;">
+    <a href="https://elementista.blogspot.com/" target="_blank" rel="noopener noreferrer" style="color: #00ffcc; text-decoration: none;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#00ffcc';">Blog Elementista</a>
+    <br>
+    <a href="https://github.com/elementista" target="_blank" rel="noopener noreferrer" style="color: #00ffcc; text-decoration: none;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#00ffcc';">Repositório Oficial no GitHub</a>
+    <br>
+    <a href="#indice-box" style="color: #ff3333; text-decoration: none;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#ff3333';">↑ Voltar ao topo</a>
+  </p>
+</footer>
+
+
+     
+    </div>
+</main>
+
+<script src="js/matrix.js"></script>
+</body>
+</html>
+
