@@ -10,6 +10,12 @@ Portal técnico independente e diário de bancada oficial do **Elementista**. Um
 * **index.html:** Linha do tempo centralizada com dossiês técnicos e artigos cronológicos.
 * **projetos.html:** Vitrine de utilitários portáteis (Elementista Browser, Flash Vault e Verificador de Hardware).
 * **sobre.html:** Perfil do operador, linhas de atuação em engenharia de sistemas e filosofia.
+* **arch-legacy.html:** Manual técnico de bancada e especificações do **Arch GNOME Legacy Respin (Elementista)**.
+
+---
+
+## 💿 Sistema Operacional em Destaque: Arch GNOME Legacy Respin (Elementista)
+Remasterização enxuta do Arch Linux direcionada a hardware legado. Mais detalhes técnicos, manuais e links de download estão disponíveis diretamente no portal {Link: elementista.github.io https://elementista.github.io/arch-legacy.html}.
 
 ---
 
