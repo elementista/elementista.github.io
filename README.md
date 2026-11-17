@@ -15,7 +15,7 @@ Portal técnico independente e diário de bancada oficial do **Elementista**. Um
 ---
 
 ## 💿 Sistema Operacional em Destaque: Arch GNOME Legacy Respin (Elementista)
-Remasterização enxuta do Arch Linux direcionada a hardware legado. Mais detalhes técnicos, manuais e links de download estão disponíveis diretamente no portal {Link: elementista.github.io https://elementista.github.io/arch-legacy.html}.
+Remasterização enxuta do Arch Linux direcionada a hardware legado. Mais detalhes técnicos, manuais e links de download estão disponíveis diretamente no portal [Arch GNOME Legacy Respin - Elementista](https://elementista.github.io/arch-legacy.html).
 
 ---
 
